@@ -27,6 +27,14 @@ Provider client-side search/filter capability to filter the list of countries ba
 List the bordering countries with their flags in horizontally scrollable component that allows click through to the relevant country. E.g. if you are on the South African country detail, Zimbabwe (or the Zimbabwean flag) should show on the bordering countries component and you should be able to click through to the Zimbabwean country detail page.
 Handle errors, write clean code. You can use any pattern your are farmiar with.
 Detailed designs
-The detailed designs can be found here: diagram
 
-The card on the detail page will need to use data from the API to create one paragraph. The used example is South Africa and the text would be as follows:
+<div style="text-align: center">
+    <table>
+        <tr>
+            <td style="text-align: center">
+                    <img src="https://user-images.githubusercontent.com/4372065/103433804-b9ce4e00-4c1d-11eb-92e9-6ca2d3fb32da.png"/>
+            </td>            
+        </tr>
+        
+  </table>
+  </div>
