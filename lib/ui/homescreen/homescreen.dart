@@ -133,15 +133,18 @@ class HomeScreenState extends State<HomeScreen> {
             child: TextField(
               controller: _textController,
               decoration: InputDecoration(
-                contentPadding: const EdgeInsets.symmetric(vertical: 5.0,horizontal: 10.0),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: ColorUtils.appColor, width: 2.0),
+                  borderSide:
+                      BorderSide(color: ColorUtils.appColor, width: 2.0),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: ColorUtils.appColor, width: 2.0),
+                  borderSide:
+                      BorderSide(color: ColorUtils.appColor, width: 2.0),
                 ),
                 border: UnderlineInputBorder(
-                    borderRadius:BorderRadius.circular(15.0)),
+                    borderRadius: BorderRadius.circular(15.0)),
                 hintText: 'Search Country...',
               ),
               onChanged: onItemChanged,
@@ -153,10 +156,12 @@ class HomeScreenState extends State<HomeScreen> {
                 return _bloc.countryList();
               },
               child: isLoading
-                      ? CustomProgressIndicator(isLoading)
-                      : chatDataListSearch != null && chatDataListSearch.length > 0
-                          ? Expanded(
-                              child: new ListView.separated(
+                  ? CustomProgressIndicator(isLoading)
+                  : chatDataListSearch != null && chatDataListSearch.length > 0
+                      ? Row(
+                          children: [
+                            Expanded(
+                                child: new ListView.separated(
                               separatorBuilder: (context, index) => Divider(
                                 color: Colors.grey,
                               ),
@@ -168,32 +173,38 @@ class HomeScreenState extends State<HomeScreen> {
                                 return GestureDetector(
                                     behavior: HitTestBehavior.translucent,
                                     onTap: () {
-                                      print(
-                                          'country' + chatDataListSearch[index].name);
+                                      print('country' +
+                                          chatDataListSearch[index].name);
 
-                                      String textToSend = chatDataListSearch[index]
-                                          .alpha2Code
-                                          .toLowerCase();
+                                      String textToSend =
+                                          chatDataListSearch[index]
+                                              .alpha2Code
+                                              .toLowerCase();
                                       SharedPrefUtils.setString(
                                           SharedPrefUtils.contryName,
                                           textToSend);
-                                     /* Navigator.push(
+                                      /* Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
                                                 DetailScreen(),
                                           ));*/
 
-                                      Navigator.push(context,
-                                          EnterExitRoute(exitPage: HomeScreen(), enterPage: DetailScreen()));
+                                      Navigator.push(
+                                          context,
+                                          EnterExitRoute(
+                                              exitPage: HomeScreen(),
+                                              enterPage: DetailScreen()));
                                     },
-                                    child: listTile(chatDataListSearch[index], index,
-                                        chatDataListSearch.length));
+                                    child: listTile(chatDataListSearch[index],
+                                        index, chatDataListSearch.length));
                               },
                             ))
-                          : Center(
-                              child: Text('No Country(s) Available'),
-                            ),
+                          ],
+                        )
+                      : Center(
+                          child: Text('No Country(s) Available'),
+                        ),
             ),
           ),
         ],
